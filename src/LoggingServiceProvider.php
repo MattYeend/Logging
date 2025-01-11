@@ -14,26 +14,29 @@ class LoggingServiceProvider extends ServiceProvider
             __DIR__ . '/Models/Log.php' => app_path('Models/Log.php'),
         ], 'logging-model');
 
+        // Automatically update namespace of published file
+        $this->registerNamespaceUpdate();
+
         // Load package migrations
         $this->loadMigrationsFrom(__DIR__ . '/Database/migrations');
-
-        // Optional: Provide a clear message about namespace update
-        $this->registerPublishingInstructions();
     }
 
     /**
-     * Display instructions for namespace update after publishing.
+     * Automatically update namespace of the published file
      */
-    protected function registerPublishingInstructions()
+    protected function registerNamespaceUpdate()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([]);
-            $this->app->terminating(function () {
-                $publishedModel = app_path('Models/Log.php');
-                if (file_exists($publishedModel)) {
-                    echo "\nNote: Update the namespace in `Models/Log.php` from `MattYeend\\Logging\\Models` to `App\\Models`.\n";
-                }
-            });
-        }
+        $this->app->terminating(function () {
+            $publishedModel = app_path('Models/Log.php');
+            if (file_exists($publishedModel)) {
+                $contents = file_get_contents($publishedModel);
+                $updatedContents = Str::replaceFirst(
+                    'namespace MattYeend\\Logging\\Models;',
+                    'namespace App\\Models;',
+                    $contents
+                );
+                file_put_contents($publishedModel, $updatedContents);
+            }
+        });
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
-class LoggerServiceProvider extends ServiceProvider
+class LoggingServiceProvider extends ServiceProvider
 {
     public function boot()
     {

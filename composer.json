@@ -1,0 +1,40 @@
+{
+    "name": "mattyeend/logging",
+    "description": "A comprehensive logging library for Laravel applications.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "Laravel",
+        "Logging",
+        "Logger",
+        "Package",
+        "Audit",
+        "Tracking"
+    ],
+    "authors": [
+        {
+            "name": "Matt Yeend",
+            "email": "mail@mattyeend.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2",
+        "laravel/framework": "^9.0 || ^10.0 || ^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0 || ^10.0",
+        "friendsofphp/php-cs-fixer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MattYeend\\Logging\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MattYeend\\Logging\\LoggingServiceProvider"
+            ]
+        }
+    }
+}

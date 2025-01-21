@@ -30,11 +30,19 @@
             "MattYeend\\Logging\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "MattYeend\\Logging\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "MattYeend\\Logging\\LoggingServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }

@@ -99,6 +99,17 @@ Add additional functionality by extending the `Log` model in your application.
     Ensure `data` passed to `Log::log()` is either `null` or an array. Example:
     `Log::log(Log::ACTION_LOGIN, ['key' => 'value'], auth()->id());`
 
+## Testing
+To run tests, follow the next steps:
+1. Install dependencies:
+```bash
+composer install
+```
+2. Run the tests:
+```bash
+composer test
+```
+
 ## License
 This package is licensed under the MIT License.
 
